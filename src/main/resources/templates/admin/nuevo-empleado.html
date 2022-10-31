@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head>
+        <meta charset="utf-8">
+        <title>REGISTRO EMPLEADOS</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+            rel="stylesheet" />
+        <style>
+            form .invalid-feedback {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Hola</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                            <a class="nav-link active" aria-current="page" href="/empleados">Empleados</a>
+                            <a class="nav-link active" aria-current="page" href="/admin">Admi</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div layout:fragment="form"> 
+        
+        
+        
+        
+        </div>
+            
+   
+        <h2>Registro de empleados</h2>
+        <br>
+        <form action="" method="post" th:object="${empleado}" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="nombre_empleado" class="form-label">Nombre: </label> <input
+                    type="text" id="nombre_empleado" placeholder="Digite el nombre"
+                    class="form-control" th:field="*{nombre_empleado}"> 
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre_empleado')}"
+                     th:errors="*{nombre_empleado}"></div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="horario_empleado" class="form-label">Horario: </label> <input
+                type="text" id="horario_empleado" placeholder="Digite el horario"
+                class="form-control" th:field="*{horario_empleado}">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('horario_empleado')}"
+                 th:errors="*{horario_empleado}"></div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="correo_empleado" class="form-label">Correo: </label> <input
+            type="text" id="correo_empleado" placeholder="Digite el correo"
+            class="form-control" th:field="*{correo_empleado}">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('correo_empleado')}"
+             th:errors="*{correo_empleado}"></div>
+    </div>
+</div>
+<div class="mb-3">
+    <label for="celular_empleado" class="form-label">Celular: </label> <input
+        type="text" id="celular_empleado" placeholder="El numero"
+        class="form-control" th:field="*{celular_empleado}">
+    <div class="invalid-feedback" th:if="${#fields.hasErrors('celular_empleado')}"
+         th:errors="*{celular_empleado}"></div>
+</div> 
+<div class="mb-3">
+    <label for="link_empleado" class="form-label">Link: </label> <input
+        type="text" id="link_empleado" placeholder="Digite el Link"
+        class="form-control" th:field="*{link_empleado}">
+    <div class="invalid-feedback" th:if="${#fields.hasErrors('link_empleado')}"
+         th:errors="*{link_empleado}"></div>
+</div>
+<div class="mb-3">
+    <label for="foto" class="form-label">Foto: </label> <input
+        type="file" name="portada" id="foto" 
+        class="form-control" th:field="*{foto}">
+    <div class="invalid-feedback" th:if="${#fields.hasErrors('foto')}"
+         th:errors="*{foto}"></div>
+</div>
+<div class="mb-3">
+    <label for="Sucursal" class="form-label"> Sucursal: </label> 
+    <select id="Sucursal" class="form-control" th:field="*{Sucursal}" multiple>
+        <option th:each="Sucursal : ${sucursal}" th:value="${Sucursal.id}" th:text="${Sucursal.nombre_sucursal}"></option>
+
+    </select>
+    <div class="invalid-feedback" th:if="${#fields.hasErrors('Sucursal')}" th:errors="*{Sucursal}"></div>
+
+</div>
+
+<div class="text-end">
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</div>
+
+</form>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+crossorigin="anonymous"></script>
+
+<script
+src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script
+src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

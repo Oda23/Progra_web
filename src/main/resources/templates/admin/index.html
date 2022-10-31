@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html  >
+    <head>
+        
+
+    </head>
+    <body>
+  //borrar el div 
+        <div class="container my5">
+            <h2>EMPLEADOS</h2>
+            <div class="text-end"> 
+                <a href="/admin/empleado/nuevo" class="btn btn-primary mb-3 ">
+                    Agregar empleado
+                </a>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>                       
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Horario</th>
+                            <th>Celular</th>
+                            <th>Link</th>
+                            <th>Nombre sucursal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr  th:each="empleado : ${empleado}" th:object="${empleado}">
+                            <td style="width:150px;">
+                                <a th:href="@{/assets/{filename}(filename=*{Rutafoto})}" data-fancybox>
+                                    <img th:src="@{/assets/{filename}(filename=*{Rutafoto})}" alt="" class="img-thumbnail w-100">
+                                </a>
+                            </td>
+                            <td>
+                            <div th:text="*{nombre_empleado}" class="fs-5 fw-bold"></div>
+                            </td>
+                            <td><p th:text="*{correo_empleado}"></p></td>
+                            <td><p th:text="*{horario_empleado}"></p></td>
+                            <td><p th:text="*{celular_empleado}"></p></td>
+                            <td>  <p th:text="*{link_empleado}"></p></td>
+                            <td><div>
+                                    <span class="badge rounded-pill bg-light text-dark me-1"
+                                          th:each="sucursal : *{sucursal}" th:text="${sucursal.nombre_sucursal}">
+                                    </span>
+                                </div></td>
+
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <script
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+            <script
+            src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+            <script
+            src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>
